@@ -74,6 +74,7 @@ void displayMainMenu()
 
 void displaySales(double sales0, double sales1, double sales2, double sales3)
 {
+	double totalSales = sales1 + sales1 + sales2 + sales3;
 	system("cls"); // Clear screen
 
 	displayHeader();
@@ -83,7 +84,15 @@ void displaySales(double sales0, double sales1, double sales2, double sales3)
 		"1. Anchor Store: $" << sales0 << endl <<
 		"2. Ridgewood: $" << sales1 << endl <<
 		"3. Phiffer: $" << sales2 << endl <<
-		"4. Mall Kiosk: $" << sales3 << endl;
+		"4. Mall Kiosk: $" << sales3 << endl <<
+		"-----------------------" << endl <<
+		"Total sales: $" << totalSales << endl;
+
+	cout << "Need to update sales information for a store? (Y/N)";
+	setSales();
+
+	gotoMain();
+	
 }
 
 void gotoMain() 
