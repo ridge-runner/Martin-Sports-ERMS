@@ -1,6 +1,9 @@
 // Ch10.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
+
+// TODO: refactor setSales() and getSales(). Get setSales() to update sales figures for stores.
+
 #include <iostream>
 #include <iomanip>
 #include <ctime>
@@ -10,19 +13,17 @@ using namespace std;
 
 void displayHeader();
 void displayMainMenu();
-void displaySales(double, double, double, double);
+void displaySales(double &, double &, double &, double &);
 void gotoMain();
+double setSales(double, double, double, double);
 
 int main()
 {
-	double sales0 = 0.0;
+	double sales0 = 0.0; // number == store number
 	double sales1 = 0.0;
 	double sales2 = 0.0;
 	double sales3 = 0.0;
 
-	double salesTotal = 0.0;
-	
-	salesTotal = sales0 + sales1 + sales2 + sales3;
 	
 	int exit = 0;
 	while (exit == 0)
@@ -33,7 +34,7 @@ int main()
 	
 	// Main Menu
 	displayMainMenu();
-	cout << ">>";
+	cout << ">> ";
 
 	int menuChoice = 0;
 	cin >> menuChoice;
@@ -80,19 +81,32 @@ void displaySales(double sales0, double sales1, double sales2, double sales3)
 	displayHeader();
 	// sales page data report
 	cout << endl <<
-		"Sales Report for all Stores:" << endl <<
+		"SALES REPORT FOR ALL STORES:" << endl <<
 		"1. Anchor Store: $" << sales0 << endl <<
 		"2. Ridgewood: $" << sales1 << endl <<
 		"3. Phiffer: $" << sales2 << endl <<
 		"4. Mall Kiosk: $" << sales3 << endl <<
 		"-----------------------" << endl <<
 		"Total sales: $" << totalSales << endl;
-
-	cout << "Need to update sales information for a store? (Y/N)";
-	setSales();
-
-	gotoMain();
 	
+	// Option menu UI
+	int option = 0;
+	cout <<
+		"OPTIONS:" << endl <<
+		"1. Update Sales data for store location." << endl <<
+		"2. Return to Main Menu." << endl <<
+		">> ";
+	cin >> option;
+
+	switch (option)
+	{
+	case 1:
+		setSales(&sales1, &sales1, &sales2, &sales3);
+	
+	case 2:
+		gotoMain();
+	}
+		
 }
 
 void gotoMain() 
@@ -105,4 +119,24 @@ void gotoMain()
 	}
 
 	system("CLS");
+}
+
+double setSales(double &s0, double &s1, double &s2, double &s3)
+{
+	int option = 9;
+	cout <<
+		"Please enter the store number:" << endl <<
+		"0 Anchor" << endl <<
+		"1 Ridgewood" << endl <<
+		"2 Phiffer" << endl <<
+		"3 Mall Kiosk" << endl <<
+		">> ";
+	cin >> option;
+	switch (option)
+	{
+	case 0: 
+		s0 = 
+
+	}
+
 }
